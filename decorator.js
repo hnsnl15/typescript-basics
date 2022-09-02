@@ -6,20 +6,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-var MenuItem = function (target) {
-    target.prototype.id = "abc";
+// Step in Configuring Decorators.
+// 1. Go to the terminal and type npx tsx --init
+// 2. Go to the created file and delete all the codes in there and
+//    copy paste the code in this repository with a file name tsconfig.json.
+var MenuItem = function (itemID) {
+    return function (target) {
+        target.prototype.id = itemID;
+    };
 };
 var Pizza = /** @class */ (function () {
     function Pizza() {
     }
     Pizza = __decorate([
-        MenuItem
+        MenuItem("abc")
     ], Pizza);
     return Pizza;
 }());
 var Hamburger = /** @class */ (function () {
     function Hamburger() {
     }
+    Hamburger = __decorate([
+        MenuItem("xyz")
+    ], Hamburger);
     return Hamburger;
 }());
 console.log(new Pizza().id);
+console.log(new Hamburger().id);
